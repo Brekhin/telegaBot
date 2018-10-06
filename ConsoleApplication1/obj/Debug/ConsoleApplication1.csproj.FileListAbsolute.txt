@@ -1,0 +1,10 @@
+D:\8_semestr\эпи\6_2\ConsoleApplication1\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe.config
+D:\8_semestr\эпи\6_2\ConsoleApplication1\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe
+D:\8_semestr\эпи\6_2\ConsoleApplication1\ConsoleApplication1\bin\Debug\ConsoleApplication1.pdb
+D:\8_semestr\эпи\6_2\ConsoleApplication1\ConsoleApplication1\bin\Debug\Newtonsoft.Json.dll
+D:\8_semestr\эпи\6_2\ConsoleApplication1\ConsoleApplication1\bin\Debug\Telegram.Bot.dll
+D:\8_semestr\эпи\6_2\ConsoleApplication1\ConsoleApplication1\bin\Debug\Newtonsoft.Json.xml
+D:\8_semestr\эпи\6_2\ConsoleApplication1\ConsoleApplication1\bin\Debug\Telegram.Bot.xml
+D:\8_semestr\эпи\6_2\ConsoleApplication1\ConsoleApplication1\obj\Debug\ConsoleApplication1.csprojResolveAssemblyReference.cache
+D:\8_semestr\эпи\6_2\ConsoleApplication1\ConsoleApplication1\obj\Debug\ConsoleApplication1.exe
+D:\8_semestr\эпи\6_2\ConsoleApplication1\ConsoleApplication1\obj\Debug\ConsoleApplication1.pdb
