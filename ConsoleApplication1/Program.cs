@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using Telegram.Bot.Args;
 using static ConsoleApplication1.JSONToEntity;
@@ -14,7 +15,7 @@ namespace ConsoleApplication1
 {
     class Program
     {
-        private static String API_KEY = "690981863:AAGvU_8M89Rq9JW85jQ1gHTcNhNZJsQ_SGw";
+        private static String API_KEY = "687026557:AAHr8uBJPsC-Q_yi3MiVfl77EWrgB65o6OQ";
         private static readonly Telegram.Bot.TelegramBotClient Bot = new Telegram.Bot.TelegramBotClient(API_KEY);
 
         static void Main(string[] args)
@@ -47,17 +48,17 @@ namespace ConsoleApplication1
  
             List<Plan> planN = new List<Plan>();
             List<DateTime> dateTimeM = new List<DateTime>();
+            List<Datum> datum = new List<Datum>();
             foreach (Datum dt in info.data)
             {
                 foreach(Plan pl in dt.plans)
                 {
                     if (pl.sumTotal >= 100000000)
                     {
-                        Console.WriteLine("123");
-                        DateTime date1 = dt.changes.Last().docdate;
-                        Console.WriteLine(dt.changes.Last().docdate.ToString());
+                        DateTime date1 = dt.changes.Last().docdate;;
                         planN.Add(pl);
                         dateTimeM.Add(date1);
+                        datum.Add(dt);
                     }
                 }
             }
@@ -72,9 +73,10 @@ namespace ConsoleApplication1
             }
 
             Plan z = planN[j];
-            
+            Datum ds = datum[j];
 
-            return "Были выделены " + z.purpose.ToLower() + " на сумму " + z.sumTotal.ToString();
+            return 
+            ds.receiver[0].fullName + " получил финансирование от " + ds.grbs.shortName + ", распределенное на <<" + z.purpose.ToLower() + ">> на сумму " + z.sumTotal.ToString() + "(руб)\nКБК субсидии: " + z.kbk + "\nРег. номер: " + ds.info.regNum + "\nrs.budget.gov.ru";
         }
 
         private static void BotOnTextReceived(object sender, MessageEventArgs messageEventArgs)
@@ -85,9 +87,13 @@ namespace ConsoleApplication1
             {
                 if (inn == "/start")
                 {
-                    JObject jp = getInfo();
-                    string res = parseJson(jp);
-                    Bot.SendTextMessageAsync(message.Chat.Id, res);
+                    while (true)
+                    {
+                        JObject jp = getInfo();
+                        string res = parseJson(jp);
+                        Bot.SendTextMessageAsync(message.Chat.Id, res);
+                        Thread.Sleep(1000 * 60 * 60 * 4);
+                    }
                 }
             }
             catch (Exception e)
